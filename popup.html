@@ -1,0 +1,90 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <link rel="stylesheet" href="style.css">
+        <meta charset="UTF-8">
+        <html lang="fr">
+    </head>
+    <body>
+        <h1>Manuels scolaires</h1>
+
+        <div class="selecteur">
+            <label>Classe : </label>
+            <select name="classe" id="classe">
+                <optgroup label="Collège">
+                    <option value="6eme">6ème</option>
+                    <option value="5eme">5ème</option>
+                    <option value="4eme">4ème</option>
+                    <option value="3eme">3ème</option>
+                </optgroup>
+                <optgroup label="Lycée">
+                    <option value="2eme">Seconde</option>
+                    <option value="1ere">Première</option>
+                    <option value="term">Terminale</option>
+                </optgroup>
+            </select>
+        </div>
+
+
+        <div class="selecteur">
+            <label>Matière : </label>
+            <select name="matiere" id="matiere">
+                <optgroup label="Scientifique">
+                    <option value="es">ES (Enseignement Scientifique)</option>
+                    <option value="maths">Mathématiques</option>
+                    <option value="pc">Physique-Chimie</option>
+                    <option value="svt">SVT (Sciences de la vie et de la Terre)</option>
+                    <option value="tech">Technologie</option>
+                </optgroup>
+                <optgroup label="Langue">
+                    <option value="lg_all">Allemand</option>
+                    <option value="lg_chi">Chinois</option>
+                    <option value="lg_esp">Espagnol</option>
+                    <option value="lg_fra">Français</option>
+                </optgroup>
+                <optgroup label="Langue mortes">
+                    <option value="lg_all">Allemand</option>
+                    <option value="lg_m_gre">Grec ancien</option>
+                    <option value="lg_m_lat">Latin</option>
+                </optgroup>
+                <optgroup label="Spécialités">
+                    <option value="arts">Arts</option>
+                    <option value="eat">EAT (Ecologie - Agronomie et Territoire)</option>
+                    <option value="hggsp">HGGSP (Histoire-géographie, géopolitique et sciences politiques)</option>
+                    <option value="hlp">HLP (Humanités, littérature et philosophie)</option>
+                    <option value="llca">LLCA (Littérature, langues et culture de l'Antiquité)</option>
+                    <option value="llce">LLCE (Langues, littératures et cultures étrangères)</option>
+                    <option value="maths">Mathématiques</option>
+                    <option value="nsi">NSI (Numériques et sciences informatiques)</option>
+                    <option value="pc">Physique-Chimie</option>
+                    <option value="ses">SES (Sciences économiques et sociales)</option>
+                    <option value="si">SI (Sciences de l'ingénieur)</option>
+                    <option value="sport">Sports: Education Physique, pratique et culture sportives </option>
+                    <option value="svt">SVT (Sciences de la vie et de la Terre)</option>
+                </optgroup>
+                <optgroup label="Autre">
+                    <option value="au_mus">Musique</option>
+                </optgroup>
+            </select>
+        </div>
+
+
+        <div class="selecteur">
+            <label>Maison d'édition : </label>
+            <select name="edition" id="edition">
+                <option value="belin">Belin</option>
+                <option value="hachette">Hachette</option>
+                <option value="nathan">Nathan</option>
+                <option value="magnard">Magnard</option>
+                <option value="bordas">Bordas</option>
+                <option value="lelivrescolaire">LeLivreScolaire</option>
+            </select>
+        </div>
+
+
+        <input type="submit" id="btn_rechercher" value="Rechercher">
+
+        <script src="script.js"></script>
+
+    </body>
+</html>

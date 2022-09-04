@@ -1,0 +1,15 @@
+{
+  "name": "Manuels scolaires",
+  "version": "0.01",
+  "description": "oui",
+  
+  "manifest_version": 3, 
+  "action": {
+    "default_icon": {
+      "512": "book.png"
+    },
+    "default_title": "Manuels scolaires",
+    "default_popup": "popup.html"
+  }
+  
+}
