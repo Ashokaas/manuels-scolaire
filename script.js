@@ -38,8 +38,6 @@ function csv_to_JSON(csv) {
 
 
 
-
-
 function rechercher() {
     var manuels = csv_to_JSON(load_google_sheets("https://docs.google.com/spreadsheets/d/e/2PACX-1vTd1-ZFtLOY49L8MiceYW6Btl0i_5kdSpqWvaor_bxQX9z1QEkcANBX6Qct7aYArBkaYGgPbQ-OtFr8/pub?gid=0&single=true&output=csv"))
     console.log(manuels)
@@ -49,35 +47,42 @@ function rechercher() {
     var edition = document.getElementById('edition').value;
     
     var num = manuels.length;
+    var bon_manuel = []
     for (var i=0; i<num; i++) {
         console.log('test')
         if (manuels[i]["classe"] === classe && manuels[i]["matiere"] === matiere && manuels[i]["edition"] === edition)  {
-            var bon_manuel = manuels[i];
+            bon_manuel.push(manuels[i]);
         }
     }
     console.log(bon_manuel)
-    // Create anchor element.
-    var a = document.createElement('a'); 
-                  
-    // Create the text node for anchor element.
-    var link = document.createTextNode(bon_manuel['titre']);
-      
-    // Append the text node to anchor element.
-    a.appendChild(link); 
-      
-    // Set the href property.
-    a.href = bon_manuel['url']; 
+    console.log(getCurrentURL())
 
-    a.target = "_blank"
-      
-    // Append the anchor element to the body.
-    document.body.appendChild(a); 
+    var len_bon_manuel = bon_manuel.length
+    console.log(len_bon_manuel)
+    for (var e=0; e<len_bon_manuel; e++) {
+        console.log("oui")
+        // Create anchor element.
+        var a = document.createElement('a'); 
+                    
+        // Create the text node for anchor element.
+        var link = document.createTextNode(bon_manuel[e]['titre']);
+        
+        // Append the text node to anchor element.
+        a.appendChild(link); 
+        
+        // Set the href property.
+        a.href = bon_manuel[e]['url']; 
+
+        a.target = "_blank"
+        
+        // Append the anchor element to the body.
+        document.getElementById('liens_manuels').appendChild(a);
+    }
 
 }
 
 // Execute la fonction rechercher() lors du click sur le bouton
 document.getElementById("btn_rechercher").addEventListener('click', rechercher);
-
 
 
 

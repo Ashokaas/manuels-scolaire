@@ -4,7 +4,7 @@
 
 body {
     width: 300px;
-    height: 300px;
+    height: 350px;
 }
 
 
@@ -18,8 +18,21 @@ h1 {
 
 select {
     height: 25px;
-    box-shadow: 0px 0px 6px grey;
+    box-shadow: rgba(136, 165, 191, 0.48) 6px 2px 16px 0px, rgba(255, 255, 255, 0.8) -6px -2px 16px 0px;
+    /*box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;*/
     border: none;
+    padding-left: 10px;
+    height: 35px;
+}
+
+
+option {
+    height: 40px;
+}
+
+
+select[open] {
+	transform: rotate(-45deg) translate(0%, 0%);
 }
 
 
@@ -27,15 +40,20 @@ select {
     display: flex;
     justify-content: flex-start;
     flex-direction: column;
-    margin: 8px 3px;
+    margin: 8px 5px;
 }
+
+
+
+
 
 label {
     margin: 3px 0px;
+    z-index: 10;
 }
 
 #classe {
-    width: 90px;
+    width: 100px;
 }
 
 #matiere {
@@ -50,7 +68,7 @@ label {
 /* Bouton */
 
 #btn_rechercher {
-    margin: 20px auto;
+    margin: 23px auto 11px auto;
 	border: none;
 	box-shadow: none;
 	padding: 10px 25px;
@@ -58,11 +76,27 @@ label {
 	color: #FFF;
 	font-size: 16px;
 	cursor: pointer;
-    transition: all .2s;
+    transition: all .1s;
     display: flex;
     justify-content: center;
 }
 
 #btn_rechercher:hover {
     background: #00BCD4;
+}
+
+
+/* div lien manuels */
+#liens_manuels {
+    margin-left: 4px;
+}
+
+#liens_manuels a {
+    font-size: 13px;
+    color: blue;
+    text-decoration: none;
+}
+
+#liens_manuels a:hover {
+    color: red;
 }
