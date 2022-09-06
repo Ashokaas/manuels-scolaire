@@ -16,6 +16,13 @@ h1 {
 
 
 
+select {
+    height: 25px;
+    box-shadow: 0px 0px 6px grey;
+    border: none;
+}
+
+
 .selecteur {
     display: flex;
     justify-content: flex-start;

@@ -6,10 +6,16 @@
   "manifest_version": 3, 
   "action": {
     "default_icon": {
-      "512": "book.png"
+      "512": "img/book.png"
     },
     "default_title": "Manuels scolaires",
     "default_popup": "popup.html"
+  },
+
+  "icons": {
+    "16": "img/book16.png",
+    "32": "img/book32.png",
+    "48": "img/book48.png",
+    "128": "img/book128.png"
   }
-  
 }
