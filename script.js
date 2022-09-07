@@ -38,6 +38,11 @@ function csv_to_JSON(csv) {
 
 
 
+
+
+
+
+
 function rechercher() {
     var manuels = csv_to_JSON(load_google_sheets("https://docs.google.com/spreadsheets/d/e/2PACX-1vTd1-ZFtLOY49L8MiceYW6Btl0i_5kdSpqWvaor_bxQX9z1QEkcANBX6Qct7aYArBkaYGgPbQ-OtFr8/pub?gid=0&single=true&output=csv"))
     console.log(manuels)
@@ -55,28 +60,49 @@ function rechercher() {
         }
     }
     console.log(bon_manuel)
-    console.log(getCurrentURL())
 
     var len_bon_manuel = bon_manuel.length
     console.log(len_bon_manuel)
     for (var e=0; e<len_bon_manuel; e++) {
-        console.log("oui")
-        // Create anchor element.
+        var div = document.createElement('div')
+        div.id = 'manuel_' + e;
+        document.getElementById('liens_manuels').appendChild(div);
+
+        var div_img = document.createElement('div')
+        div_img.id = 'manuel_img_' + e
+        div_img.style.display = 'none'
+        div_img.style.backgroundColor = '#F0F0F0'
+        div_img.style.position = 'absolute';
+        div_img.style.width = '108'
+
+
+        document.getElementById('manuel_' + e).appendChild(div_img)
+
+        // Création lien
         var a = document.createElement('a'); 
-                    
-        // Create the text node for anchor element.
+
         var link = document.createTextNode(bon_manuel[e]['titre']);
-        
-        // Append the text node to anchor element.
         a.appendChild(link); 
         
-        // Set the href property.
+        // Propriétés lien
         a.href = bon_manuel[e]['url']; 
+        a.target = "_blank";
 
-        a.target = "_blank"
+        // Création images
+        var img = document.createElement('img'); 
+        img.src = bon_manuel[e]['img'];
+        img.style.width = '100px'
+        img.style.position = 'relative'
+
+        document.getElementById('manuel_' + e).addEventListener("mouseover", function(event) {
+            div_img.style.display = 'block'
+        })
+
+
+        document.getElementById('manuel_img_' + e).appendChild(img);
         
         // Append the anchor element to the body.
-        document.getElementById('liens_manuels').appendChild(a);
+        document.getElementById('manuel_' + e).appendChild(a);
     }
 
 }
