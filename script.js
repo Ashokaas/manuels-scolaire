@@ -40,12 +40,12 @@ function csv_to_JSON(csv) {
 
 
 
+var manuels = csv_to_JSON(load_google_sheets("https://docs.google.com/spreadsheets/d/e/2PACX-1vTd1-ZFtLOY49L8MiceYW6Btl0i_5kdSpqWvaor_bxQX9z1QEkcANBX6Qct7aYArBkaYGgPbQ-OtFr8/pub?gid=0&single=true&output=csv"))
 
 
 
 function rechercher() {
-    var manuels = csv_to_JSON(load_google_sheets("https://docs.google.com/spreadsheets/d/e/2PACX-1vTd1-ZFtLOY49L8MiceYW6Btl0i_5kdSpqWvaor_bxQX9z1QEkcANBX6Qct7aYArBkaYGgPbQ-OtFr8/pub?gid=0&single=true&output=csv"))
-    console.log(manuels)
+    console.log(manuels);
     
     var classe = document.getElementById('classe').value;
     var matiere = document.getElementById('matiere').value;
@@ -59,50 +59,88 @@ function rechercher() {
             bon_manuel.push(manuels[i]);
         }
     }
-    console.log(bon_manuel)
+    console.log(bon_manuel);
 
-    var len_bon_manuel = bon_manuel.length
-    console.log(len_bon_manuel)
-    for (var e=0; e<len_bon_manuel; e++) {
-        var div = document.createElement('div')
-        div.id = 'manuel_' + e;
-        document.getElementById('liens_manuels').appendChild(div);
+    var len_bon_manuel = bon_manuel.length;
+    console.log(len_bon_manuel);
+    document.getElementById('liens_manuels').innerHTML = '';
+    if (len_bon_manuel > 0) {
+        for (var e=0; e<len_bon_manuel; e++) {
+            
+            /*
+            var div = document.createElement('div')
+            div.id = 'manuel_' + e;
+            document.getElementById('liens_manuels').appendChild(div);
 
-        var div_img = document.createElement('div')
-        div_img.id = 'manuel_img_' + e
-        div_img.style.display = 'none'
-        div_img.style.backgroundColor = '#F0F0F0'
-        div_img.style.position = 'absolute';
-        div_img.style.width = '108'
-
-
-        document.getElementById('manuel_' + e).appendChild(div_img)
-
-        // Création lien
-        var a = document.createElement('a'); 
-
-        var link = document.createTextNode(bon_manuel[e]['titre']);
-        a.appendChild(link); 
-        
-        // Propriétés lien
-        a.href = bon_manuel[e]['url']; 
-        a.target = "_blank";
-
-        // Création images
-        var img = document.createElement('img'); 
-        img.src = bon_manuel[e]['img'];
-        img.style.width = '100px'
-        img.style.position = 'relative'
-
-        document.getElementById('manuel_' + e).addEventListener("mouseover", function(event) {
-            div_img.style.display = 'block'
-        })
+            var div_img = document.createElement('div')
+            div_img.id = 'manuel_img_' + e
+            div_img.style.display = 'none'
+            div_img.style.backgroundColor = '#F0F0F0'
+            div_img.style.position = 'absolute';
+            div_img.style.width = '108'
 
 
-        document.getElementById('manuel_img_' + e).appendChild(img);
-        
-        // Append the anchor element to the body.
-        document.getElementById('manuel_' + e).appendChild(a);
+            document.getElementById('manuel_' + e).appendChild(div_img)
+
+            // Création lien
+            var a = document.createElement('a'); 
+
+            var link = document.createTextNode(bon_manuel[e]['titre']);
+            a.appendChild(link); 
+            
+            // Propriétés lien
+            a.href = bon_manuel[e]['url']; 
+            a.target = "_blank";
+
+            // Création images
+            var img = document.createElement('img'); 
+            img.src = bon_manuel[e]['img'];
+            img.style.width = '100px'
+            img.style.position = 'relative'
+
+            document.getElementById('manuel_' + e).addEventListener("mouseover", function(event) {
+                div_img.style.display = 'block'
+            })
+
+
+            document.getElementById('manuel_img_' + e).appendChild(img);
+            
+            // Append the anchor element to the body.
+            document.getElementById('manuel_' + e).appendChild(a);*/
+
+            // div contenant le manuel
+            var div = document.createElement('div');
+            div.id = 'manuel_' + e;
+            document.getElementById('liens_manuels').appendChild(div);
+
+                // lien du manuel
+            var lien = document.createElement('a');
+            lien.href = bon_manuel[e]['url'];
+            lien.target = '_blank';
+            document.getElementById('manuel_' + e).appendChild(lien);
+
+                    // img du manuel
+            var img = document.createElement('img');
+            img.src = bon_manuel[e]['img'];
+            document.getElementById('manuel_' + e).getElementsByTagName('a')[0].appendChild(img);
+
+
+                    // label titre du livre
+            var titre_manuel = document.createElement('label')
+            titre_manuel.innerHTML = bon_manuel[e]['titre']
+            titre_manuel.style.alignItems = 'center'
+            titre_manuel.style.justifyContent = 'center'
+            document.getElementById('manuel_' + e).getElementsByTagName('a')[0].appendChild(titre_manuel)
+            
+
+        }
+    } else {
+        var manuel_introuvable = document.createElement('p');
+        manuel_introuvable.innerHTML = "Votre manuel n'a pas encore été ajouté a la base de données ! ";
+        manuel_introuvable.style.margin = '7px 5px';
+        manuel_introuvable.style.fontSize = '14px';
+        document.getElementById('liens_manuels').appendChild(manuel_introuvable);
+    
     }
 
 }
