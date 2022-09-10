@@ -41,7 +41,10 @@ function csv_to_JSON(csv) {
 
 
 var manuels = csv_to_JSON(load_google_sheets("https://docs.google.com/spreadsheets/d/e/2PACX-1vTd1-ZFtLOY49L8MiceYW6Btl0i_5kdSpqWvaor_bxQX9z1QEkcANBX6Qct7aYArBkaYGgPbQ-OtFr8/pub?gid=0&single=true&output=csv"))
+var nb_manuels = manuels.length
 
+
+document.getElementById('info').getElementsByTagName('p')[0].innerHTML = `Il y a actuellement ${nb_manuels} référencés dans la base de données\nVous pouvez y contribuer après avoir consulter le fichier en accédant au Google Sheets en suivant les indications.\n Et le code de l'extension est disponible sur <a href'https://github.com/Ashokaas/manuels-scolaire'>GitHub</a>`
 
 
 function rechercher() {
@@ -145,8 +148,23 @@ function rechercher() {
 
 }
 
+
+
+function informations() {/*
+    #info img:active ~ p, #info img:active ~ #fleche {
+        display: inline-block;
+        position: absolute;
+    
+    }*/
+    p_info = document.getElementById('info')
+    console.log(p_info)
+    p_info.style.display = 'inline-block'
+    p_info.style.position = 'absolute'
+}
+
 // Execute la fonction rechercher() lors du click sur le bouton
 document.getElementById("btn_rechercher").addEventListener('click', rechercher);
+document.getElementById('info').getElementsByTagName('img')[0].addEventListener('click', informations)
 
 
 
