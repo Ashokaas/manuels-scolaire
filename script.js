@@ -44,7 +44,28 @@ var manuels = csv_to_JSON(load_google_sheets("https://docs.google.com/spreadshee
 var nb_manuels = manuels.length
 
 
-document.getElementById('info').getElementsByTagName('p')[0].innerHTML = `Il y a actuellement ${nb_manuels} référencés dans la base de données\nVous pouvez y contribuer après avoir consulter le fichier en accédant au Google Sheets en suivant les indications.\n Et le code de l'extension est disponible sur <a href'https://github.com/Ashokaas/manuels-scolaire'>GitHub</a>`
+
+var info_title = document.createElement('h2')
+info_title.innerHTML = 'Informations :'
+document.getElementById('info').getElementsByTagName('p')[0].appendChild(info_title)
+document.getElementById('info').getElementsByTagName('p')[0].innerHTML += 
+`Il y a actuellement ${nb_manuels} manuels référencés dans la base de données.<br><br>
+Vous pouvez y contribuer en accédant au `
+var sheets_link = document.createElement('a')
+sheets_link.href = 'https://docs.google.com/spreadsheets/d/1RDzBKcfG2MHvHCxuWxBnmOqv6aTagfO6sFcHgR6_wLE/'
+sheets_link.innerHTML = 'Google Sheets'
+sheets_link.target = '_blank'
+document.getElementById('info').getElementsByTagName('p')[0].appendChild(sheets_link)
+document.getElementById('info').getElementsByTagName('p')[0].innerHTML += ` en suivant les indications.<br><br>
+Et le code de l'extension est disponible sur `
+var github_link = document.createElement('a')
+github_link.href = 'https://github.com/Ashokaas/manuels-scolaire'
+github_link.innerHTML = 'GitHub'
+github_link.target = '_blank'
+document.getElementById('info').getElementsByTagName('p')[0].appendChild(github_link)
+document.getElementById('info').getElementsByTagName('p')[0].innerHTML += '.' 
+
+
 
 
 function rechercher() {
@@ -130,9 +151,14 @@ function rechercher() {
 
                     // label titre du livre
             var titre_manuel = document.createElement('label')
-            titre_manuel.innerHTML = bon_manuel[e]['titre']
+            var text = bon_manuel[e]['titre'].split('-')
+            for (var r=0; r<text.length; r++) {
+                titre_manuel.innerHTML += text[r]
+
+            }
             titre_manuel.style.alignItems = 'center'
             titre_manuel.style.justifyContent = 'center'
+            //titre_manuel.style.lineHeight = '30px'
             document.getElementById('manuel_' + e).getElementsByTagName('a')[0].appendChild(titre_manuel)
             
 
@@ -148,7 +174,7 @@ function rechercher() {
 
 }
 
-
+var active = false;
 
 function informations() {/*
     #info img:active ~ p, #info img:active ~ #fleche {
@@ -156,10 +182,14 @@ function informations() {/*
         position: absolute;
     
     }*/
-    p_info = document.getElementById('info')
-    console.log(p_info)
-    p_info.style.display = 'inline-block'
-    p_info.style.position = 'absolute'
+    if (active === false) {
+        document.getElementById('info').getElementsByTagName('p')[0].style.display = 'inline-block';
+        active = true;
+    } else if (active === true) {
+        document.getElementById('info').getElementsByTagName('p')[0].style.display = 'none';
+        active = false;
+
+    }
 }
 
 // Execute la fonction rechercher() lors du click sur le bouton

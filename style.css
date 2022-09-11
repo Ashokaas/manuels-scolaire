@@ -10,7 +10,7 @@
 /* Width/largeur */
 ::-webkit-scrollbar {
     width: 7px;
-  }
+}
   
 /* Track */
 ::-webkit-scrollbar-track {
@@ -46,9 +46,10 @@ label {
 
 body {
     width: 300px;
-    height: 460px;
+    height: 470px;
     background-color: var(--background-default-color);
     margin: 0;
+    overscroll-behavior: contain;
 }
 
 
@@ -70,17 +71,20 @@ h1 {
     filter: invert(100%);
 }
 
+#info img:hover {
+    cursor: pointer;
+}
+
 #info p {
     position: absolute;
 	display: none;
 	color: white;
-	padding: 3px;
     background-color: var(--info-color);
 	border: 3px var(--info-color);
 	border-radius: 5px;
     z-index: 2;
     width: 88%;
-    height: 80%;
+    height: 83%;
     left: 0;
     right: 0;
     top: 50px;
@@ -88,7 +92,23 @@ h1 {
     margin-right:auto;
     transition: all .2s;
     padding: 4px 10px;
-    font-size: 13px;
+    font-size: 15px;
+}
+
+#info p a {
+    color: rgb(0, 162, 255);
+    text-decoration: none;
+}
+
+#info p a:hover {
+    text-decoration: underline;
+    text-decoration-color: white;
+}
+
+#info p h2 {
+    margin: 2px 0px 10px 0px;
+    text-decoration: underline;
+    text-decoration-color: white;
 }
 
 #fleche {
@@ -218,7 +238,8 @@ label {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%)
+    transform: translate(-50%, -50%);
+    
 }
 
 #liens_manuels div {
@@ -233,10 +254,14 @@ label {
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
+
 }
 
 #liens_manuels div:hover img  {
-    opacity: 15%;
-    transform: scale(1.08);
+    opacity: 30%;
+    transform: scale(1.07);
+    filter: blur(1px);
     
 }
+
