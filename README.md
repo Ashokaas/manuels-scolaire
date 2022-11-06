@@ -25,3 +25,4 @@ Informations Google Sheets :
   - Colonne 'edition' E:
     - belin, hachette, nathan, magnard, bordas, lelivrescolaire
 
+<img src="https://user-images.githubusercontent.com/99681959/200183251-147ef852-6124-4b11-8474-525f3e9aefd6.png" width="30%">
